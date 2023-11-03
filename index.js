@@ -41,8 +41,8 @@ app.patch('/',(req,res)=>{
     })
 })
 
-app.delete('/',(req,res)=>{
-    let {id} = req.body;
+app.delete('/:id',(req,res)=>{
+    let {id} = req.params;
     db.collection('items').deleteOne({_id: new ObjectId(id)})
     .then((info)=>{
         if(info?.deletedCount){
